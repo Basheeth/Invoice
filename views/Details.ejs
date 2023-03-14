@@ -1,0 +1,129 @@
+<link href ="<%=css%>" rel="stylesheet" id="indexLink" type="text/css"/>
+<script src="https://kit.fontawesome.com/fca89533a1.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<body>
+<div id ="root">
+    <%-include ('./partials/sideBar');%>
+    <div class="wholeDiv">
+        <a class="backButton" href="index2">
+            <img src="asserts/icon-arrow-left.svg"/>
+            &nbsp;&nbsp;&nbsp;
+            Go back 
+        </a>
+        <div class="header">
+             <div class="statusShowing">
+                <div>
+                    Status
+                </div>
+                <div class="<%=ic.status%> status">
+                    <i class="fa-solid fa-circle i"></i>
+                    &nbsp;
+                    <%=ic.status%>
+                </div>
+             </div>
+             <div class="editInvoice">
+                <div onclick="edit({
+                    TableName:'<%=ic.TableName%>',
+                    clientName :'<%=ic.clientName%>',
+                    clientEmail : '<%=ic.clientEmail%>',
+                    createdAt : '<%=ic.createdAt%>',
+                    paymentsTerms:'<%=ic.paymentTerms%>',
+                    senderAddress : '<%=ic.senderAddress%>',
+                    clientAddress : '<%=ic.clientAddress%>',
+                    itemName : '<%=ic.items%>',
+                    project : '<%=ic.description%>',
+                    id: '<%= ic.id%>'
+            })" class="edit">
+                    Edit
+                </div>
+                <div onclick="deleteNode()" class="delete">
+                    Delete
+                </div>
+                <div onclick="markPaid('<%=ic.TableName%>')" class="mark">
+                    Mark as Paid
+                </div>
+             </div>
+        </div>
+         <div class="contentDiv">
+          <div class="content1"> 
+                  <div>
+                    <h3 style="margin:0px" ><span class="gray">#</span><%= ic.id%></h3>
+                    <p  class="gray"><%= ic.description %></p>
+                </div>
+               <div class="senderAddress">
+                   <%=JSON.parse(ic.senderAddress).street%> <nav></nav>
+                   <%=JSON.parse(ic.senderAddress).city%> <nav></nav>
+                   <%=JSON.parse(ic.senderAddress).postCode%> <nav></nav>
+                   <%=JSON.parse(ic.senderAddress).country%> 
+                </div>
+            </div> 
+            <div class="content2">
+                 <div>
+                    <!-- <div class="invoice gray"> Invoice Data</div> -->
+                    <h3 ><%=ic.createdAt%></h3>
+                    <div class="payment gray">Payment Due</div>
+                    <h3 ><%=ic.paymentDue%></h3>
+                 </div>
+                 <div class="clientAddress gray">
+                    Bill To
+                    <h3 class="peak"><%=ic.clientName %></h3>
+                    <%=JSON.parse(ic.clientAddress).street%> <nav></nav>
+                    <%=JSON.parse(ic.clientAddress).city%> <nav></nav>
+                    <%=JSON.parse(ic.clientAddress).postCode%> <nav></nav>
+                    <%=JSON.parse(ic.clientAddress).country%> 
+
+                 </div>
+                 <div class="clientGmail">
+                    <span class="gray">Sent to</span>
+                    <h3><%=ic.clientEmail%></h3>
+                 </div>
+            </div>
+            <div class="content3">
+                <div class="items">
+                <span class="gray">Item Name </span><nav></nav>
+                <%for (let i of JSON.parse(ic.items)){%>
+                   <b> <%=i.name %></b><nav></nav>
+                <%}%>
+                </div>
+                <div class="quantity gray">
+                    QTY. <Nav></Nav>
+                    <%for (let i of JSON.parse(ic.items)){%>
+                        <b> <%=i.quantity %></b><nav></nav>
+                     <%}%>
+                </div>
+                <div class="price gray">
+                    Price<nav></nav>
+                    <%for (let i of JSON.parse(ic.items)){%>
+                        <b> £ <%=i.price.toFixed(2) %></b><nav></nav>
+                     <%}%>
+                </div>
+                <div class="totalItems">
+                    <span class="gray">Total</span><nav></nav>
+                    <%for (let i of JSON.parse(ic.items)){%>
+                        <b> £ <%=i.total.toFixed(2) %></b><nav></nav>
+                     <%}%>
+                </div>
+            </div>
+            <div class="content4">
+              <div class="amount">
+                Amount Due 
+              </div>
+              <div class="totalAmount">
+                £  <%=ic.total.toFixed(2) %>
+              </div>
+            </div>
+        </div> 
+       <%-include('./partials/confirmDelete')%>
+    </div>
+
+
+    <%-include('./partials/newInvoice');%>
+
+
+
+</div>
+
+
+
+<script src="js/script.js"></script>
+</body>

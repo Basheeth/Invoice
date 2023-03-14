@@ -1,0 +1,75 @@
+<link href="css/newInvoice.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<div id="newInvoice">
+<div class="Invoice">
+    <form action="data" method = "POST">
+        <h1 class="newInvoiceHeading">New Invoice</h1>
+        <p class="topHeading">Bill From</p>
+        <p>Street Address</p>
+        <input id="StreetAddress" class="inputTag" type ="text" />
+        <p class="newInvoiceHead"><span>City</span><span>Post Code</span><span>Country</span></p>
+        <div class="newInvoiceHead height">
+            <input id="City" type="text" />
+            <input id="PostCode" type="text" />
+            <input id="country" type="text" />
+        </div>
+        <p class="topHeading">Bill To</p>
+        <p>Client's Name</p>
+        <input id="clientName" class="inputTag" type="text" />
+        <p>Client's Email</p>
+        <input id="ClientEmail" class="inputTag" type="text" />
+        <p>Street Address</p>
+        <input id="ToStreetAddress" type="text" class="inputTag" />
+        <p class="newInvoiceHead"><span>City</span><span>Post Code</span><span>Country</span></p>
+        <div class="newInvoiceHead height">
+            <input id="ToCity" type="text" />
+            <input id="ToPostCode" type="number" />
+            <input id="ToCountry" type="text" />
+        </div>
+        <p class="newInvoiceHead2">
+            <span>Invoice Date</span>
+            <span>Payment Terms</span>
+        </p>   
+        <div class="newInvoiceHead2 height">
+            <input id ="invoiceDate" type="date" />
+            <select id="PaymentsTerms" type="text">
+                  <option value="1">Net 1 Day</option>
+                  <option value="4">Net 4 Days</option>
+                  <option value="7">Net 7 Days</option>
+                  <option value="30">Net 30 Days</option>
+            </select>
+        </div>
+        <p>Project description</p>
+        <input id="projectDescription" class="inputTag" type="text" />
+        <h3 class="topHeading2">Item List</h3>
+        <div id="additionalDiv"></div>
+        <div onclick="createNewItem()" class="addNewItem">
+            +Add New Item
+        </div>
+        <div class="newInvoiceLastPart">
+            <div onclick="discardInvoice()" placeholder="Discard" class="discard display"> Discard</div>
+            <div id="SaveAsDraft" onclick="draftInvoice('Draft','<%=ic.id%>')" class="DraftInvoice display"> Save as Draft</div>
+            <div id="Send" onclick="draftInvoice('Pending','<%=ic.id%>')" class="save display"> Save & Send</div>
+        </div>
+    </form>
+</div>
+<div></div>
+</div>
+
+<script src="js/script.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

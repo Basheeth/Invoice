@@ -1,0 +1,153 @@
+#newInvoice{
+   width: 95.3%;
+    height:100%;
+    position:absolute;
+    top:0px;
+    left: 89px;
+    display:none;
+    z-index:2;
+    overflow: hidden;
+    background-color: rgb(17, 14, 14,0.2);
+}
+
+.Invoice{
+    width: 45%;
+    height:100%;
+    background-color: #FFFFFF;
+    border-radius: 0px 30px 30px 0px;
+    padding:3%;
+     padding-bottom:1%;
+    box-sizing: border-box;
+    color: #7E88C3;
+    overflow: scroll;
+}
+
+.topHeading{
+    color:#7C5DFA;
+    font-weight: bolder;
+    margin-top:8%;
+    margin-bottom:4%;
+}
+
+.newInvoiceHeading{
+    color:black;
+}
+
+.inputTag{
+    width:100%;
+    height: 5%;
+    color:black;
+    font-weight: bolder;
+    font-size:18px
+}
+
+.newInvoiceHead{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 6%;
+}
+
+.height{
+    height:5%;
+}
+
+.newInvoiceHead2{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 6%;
+}
+
+.topHeading2{
+    margin-top: 6%;
+    color:#777F98;
+    margin-bottom:4%;
+}
+
+.newInvoiceHead3{
+    display: grid;
+    grid-template-columns: 4fr 1fr 2fr 1fr 1fr;
+    grid-gap:3%;
+}
+
+.width{
+    width:100%;
+}
+
+.addNewItem{
+    width:100%;
+    height:5%;
+    background-color: #F9FAFE;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+    font-weight: bolder;
+    border-radius:30px
+}
+
+.newInvoiceLastPart{
+    height: 5%;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-gap:1%;
+    margin-top:4%;
+}
+
+.discard{
+    background-color: #F9FAFE;
+    color: #7E88C3;
+    border-radius: 50px;
+}
+
+.draftInvoice{
+    grid-column-start: 3;
+    background-color: #373B53;
+    color:#888EB0;
+    border-radius: 50px;
+}
+
+.save{
+    grid-column-start: 4;
+    background-color: #7C5DFA;
+    color:white;
+    border-radius: 50px;
+}
+
+.display{
+    width:84%;
+    font-weight: bolder;
+    text-align: center;
+    border:none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+input{
+    font-size:18px; 
+    font-weight: bolder;
+    width: 100%;
+    padding-left: 18px;
+    box-sizing: border-box;
+}
+
+#paymentsTerms{
+    background-color: white;
+    border: 1px solid black;
+    font-size:18px; 
+    font-weight: bolder;
+    padding-left: 18px;
+    box-sizing: border-box;
+}
+
+#itemTotal{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    font-weight: bolder;
+}
+
+
+.trashPin{
+    font-size: 228%;
+}

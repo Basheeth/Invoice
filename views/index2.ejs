@@ -1,0 +1,67 @@
+<link href="<%=css%>" rel="stylesheet" id="indexLink" type="text/css" />
+<script src="https://kit.fontawesome.com/fca89533a1.js" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<body>
+<div id ="root">
+    <%-include('./partials/sideBar'); %>
+   <div class="wholeDiv">
+      <div class="header">
+        <div class="heading">
+            <h2><b>Invoices</b></h2>
+            <P class="p">There are <span class="l">7</span> total voices</P>
+        </div>
+     <div class="filterDiv">
+            <div onclick="showFilter()">Filter by status  <img class="downArrow" src="asserts/1.svg" /></div>
+        </div>
+        <div class="newInvoiceDiv" onclick="showInvoice()">
+             <div  class="newInvoiceButton">
+                <div class="roundLogo">
+                    <img src="asserts/icon-plus.svg"/>
+                </div>
+                <div class="center"> New Invoice
+             </div>
+        </div>
+      </div>
+   </div>
+   <div class="mainDiv">
+    <%for (let i = 0;i < jsonData.length ; i++){%>
+         <div class="userDetails">
+            <div class="id">#<%=jsonData[i].id%></div>
+
+            <div class="paymentDue">
+                Due <%=jsonData[i].paymentDue.split("-")[1]%> 
+                <%=months[Number(jsonData[i].paymentDue.split("-")[1])]%>
+                <%=jsonData[i].paymentDue.split("-")[0]%> 
+            </div>
+
+            <div class="clientName"><%=jsonData[i].clientName%></div>
+
+            <div class="total">£<%=jsonData[i].total%></div>
+
+            <% if (jsonData[i].status == "paid"){ %>
+                <div class="status Paid" ><i class="fa-solid fa-circle i "></i>Paid</div>
+                <%}else if(jsonData[i].status == "pending"){ %>
+                    <div class="status Pending"><i class="fa-solid fa-circle i"></i>Pending</div>
+                    <% }else{ %>
+                        <div class="status Draft"><i class="fa-solid fa-circle i"></i>Draft</div>
+                        <%} %>
+        <a href="viewInvoice?id=<%=jsonData[i].TableName%>" ><img class="arrowRight" src="asserts/right.svg"/></a>
+         </div>
+   <%}%>
+   
+   </div>
+
+</div>
+<%-include('./partials/newInvoice');%>
+</div>
+<div id ="filter" >
+    <input checked onclick="filteredDiv('Draft',this.checked)" class="checkBox" type="checkbox"> Draft <br><br>
+    <input checked onclick="filteredDiv('Pending',this.checked)" class="checkBox" type="checkbox"> Pending <br><br>
+    <input checked onclick="filteredDiv('Paid',this.checked)" class="checkBox" type="checkbox"> Paid 
+</div>
+
+
+
+<script src="js/script.js"></script>
+</body>
+
